@@ -5,7 +5,7 @@ O ambiente Mac disponibilizado pela Nasajon para desenvolvimento de aplicações
 ## Realizando login
 Quando acesso for disponibilizado, você receberá as credenciais para login, junto com o hostname e um arquivo zip, contendo diversos arquivos .rdp:
 
-![](./imgs/credenciais-macincloud.png)
+![](./images/credenciais-macincloud.png)
 
 - **Windows**
     Ao extrair o arquivo zip, você identificara uma pasta com os diversos arquivos .rdp para diferentes configurações, basta executar o arquivo .rdp desejando, prosseguir e quando a conexão for estabelecida, realize o login com as credenciais recebidas.
@@ -37,8 +37,49 @@ A máquina já vem pré configurada com diversos programas para desenvolvimento.
 
 ### Utilizando o git
 
-Somente seguir a etapa 3 do documento de [configurar o ambiente de desenvolvimento](https://github.com/Nasajon/Arquitetura/blob/master/Cookbooks/como-configurar-ambiente-desenvolvimento.md#3---configura%C3%A7%C3%A3o-github), pulando apenas o passo de instalar o git que no caso ja vem instalado.
+- **Configurando usuário git**
+    Ao realizar o login na máquina, configure seu usuário git:
+    ```
+    git config --global user.name "Seu Nome"
+    ```
+    ```
+    git config --global user.email "sua-identidade-nasajon@nasajon.com.br"
+    ```
+    
 
+- **Gere a chave ssh:**
+
+    Caso ja tenha uma chave `ssh` configurada na máquina, siga os passos descritos na etapa *Reconfigurando o usuário*.
+    ```
+    ssh-keygen -t rsa -b 4096 -C "sua-identidade-nasajon@nasajon.com.br"
+    ```
+    Vá ao diretório `.ssh` com o comando `cd .ssh`
+
+    No diretório `.ssh`, a chave gerada está no arquivo `id_rsa.pub`. Execute: 
+    ```
+    cat id_rsa.pub
+    ```
+    No GitHub, clique na sua foto de perfil, vá em `Settings`>`SSH and GPG Keys`>`New SSH key` e cole, no campo `Key`, toda a chave gerada no passo anterior. Escolha um `title` para identificar essa chave e salve.
+
+- **Verificando usuário:**
+    Para verificar se consegui configurar o usuário com sucesso, execute:
+    ```
+    ssh -T git@github.com
+    ```
+    Se tudo estiver correto, você deve ver a mensagem `Hello Fulano! You've successfully authenticated, but GitHub does not provide shell access.`.
+
+- **Finalizando a seção:**
+    Ao terminar o uso da máquina, para que outros usuários também possam utilizar o git, vá para o diretório `.ssh`
+    renomeie os arquivos `id_rsa` e `id_rsa.pub` adicionando o seu nome no final para identificação, caso volte a utilizar novamente.
+
+    ```
+    mv id_rsa id_rsa_fulano
+    ```
+    ```
+    mv id_rsa.pub id_rsa_fulano.pub
+    ```
+- **Reconfigurando o usuário:**
+    Para voltar a utilizar a sua chave, basta renomear novamente para `id_rsa` e `id_rsa.pub`, não se esqueça de adicionar novamente seu usuário para o `git config --global` do primeiro passo. 
 
 ### Instalando outros programas
 
@@ -85,7 +126,7 @@ Para acessar o simulador e rodar a nossa aplicação:
 4. Identifique o arquivo com a extensão .xcworkspace (Ex: Nome do Projeto.xcworkspace)
 5. Clique em "open", e abrirá a o Xcode exibindo algumas informações.
 6. No header do program, você identificará algumas informações como o nome do projeto e ao lado a plataforma que será executada a aplicação no simulador.
-Ex: ![](./imgs/header-xcode.png)
+Ex: ![](./images/header-xcode.png)
 7. Clique no ícone de "play" e a aplicação começara a rodar no simulador.
 8. Para alterar a plataforma que deseja testar a aplicação, clique na plataforma ao lado do nome da aplicação, e será exibido um menu com diversas plataformas da Apple, basta selecionar e clicar novamente no ícone de "play"
 
@@ -95,7 +136,7 @@ Ex: ![](./imgs/header-xcode.png)
     2.1 Para fazer isso, vá para Safari—> Preferences. Em seguida, vá para a guia Advanced e marque a opção "Show Develop menu in menu bar". 
 3. Com o simulador aberto, e rodando a sua aplicação:
 4. Vá para o Safari clique em Develop, irá aparecer o menu, com diversas opções, identifique a Simulator - Nome da plataforma (depende de qual você esta utilizando para testar) -> localhost.
-![](./imgs/simulador-safari.png)
+![](./images/simulador-safari.png)
 5. Ao clicar em localhost, irá abrir o inspetor da web no Safari, mas na nossa aplicação do iOS Simulator, e basta utilizar assim como fazemos com o DevTools do google chrome.
 
 ### Referências
