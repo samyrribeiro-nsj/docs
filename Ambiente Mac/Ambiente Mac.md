@@ -37,7 +37,7 @@ A máquina já vem pré configurada com diversos programas para desenvolvimento.
 
 ### Utilizando o git
 
-- **Configurando usuário git**
+1. **Configurando usuário git**
     Ao realizar o login na máquina, configure seu usuário git:
     ```
     git config --global user.name "Seu Nome"
@@ -47,9 +47,8 @@ A máquina já vem pré configurada com diversos programas para desenvolvimento.
     ```
     
 
-- **Gere a chave ssh:**
+2. **Gere a chave ssh:**
 
-    Caso ja tenha uma chave `ssh` configurada na máquina, siga os passos descritos na etapa *Reconfigurando o usuário*.
     ```
     ssh-keygen -t rsa -b 4096 -C "sua-identidade-nasajon@nasajon.com.br"
     ```
@@ -60,15 +59,16 @@ A máquina já vem pré configurada com diversos programas para desenvolvimento.
     cat id_rsa.pub
     ```
     No GitHub, clique na sua foto de perfil, vá em `Settings`>`SSH and GPG Keys`>`New SSH key` e cole, no campo `Key`, toda a chave gerada no passo anterior. Escolha um `title` para identificar essa chave e salve.
+    > Caso ja tenha uma chave `ssh` configurada na máquina, siga os passos descritos na etapa *Reconfigurando o usuário*.
 
-- **Verificando usuário:**
+3. **Verificando usuário:**
     Para verificar se consegui configurar o usuário com sucesso, execute:
     ```
     ssh -T git@github.com
     ```
     Se tudo estiver correto, você deve ver a mensagem `Hello Fulano! You've successfully authenticated, but GitHub does not provide shell access.`.
 
-- **Finalizando a seção:**
+4. **Finalizando a seção:**
     Ao terminar o uso da máquina, para que outros usuários também possam utilizar o git, vá para o diretório `.ssh`
     renomeie os arquivos `id_rsa` e `id_rsa.pub` adicionando o seu nome no final para identificação, caso volte a utilizar novamente.
 
@@ -78,7 +78,7 @@ A máquina já vem pré configurada com diversos programas para desenvolvimento.
     ```
     mv id_rsa.pub id_rsa_fulano.pub
     ```
-- **Reconfigurando o usuário:**
+5. **Reconfigurando o usuário:**
     Para voltar a utilizar a sua chave, basta renomear novamente para `id_rsa` e `id_rsa.pub`, não se esqueça de adicionar novamente seu usuário para o `git config --global` do primeiro passo. 
 
 ### Instalando outros programas
@@ -140,9 +140,9 @@ Ex: ![](./images/header-xcode.png)
 5. Ao clicar em localhost, irá abrir o inspetor da web no Safari, mas na nossa aplicação do iOS Simulator, e basta utilizar assim como fazemos com o DevTools do google chrome.
 
 ### Referências
-[Access Your MacinCloud Managed Server Through a Web Browser](https://support.macincloud.com/support/solutions/articles/8000093372-access-your-macincloud-managed-server-through-a-web-browser)
-[How To Open Firewall Ports In Windows 10](https://www.tomshardware.com/news/how-to-open-firewall-ports-in-windows-10,36451.html)
-[rdesktop](https://github.com/rdesktop/rdesktop)
-[Installing software on the Managed & Pay-As-You-Go server plan](https://support.macincloud.com/support/solutions/articles/8000054252-installing-software-on-the-managed-pay-as-you-go-server-plan)
-[How to Manage your Node Version with NVM on a MacinCloud Managed Server](https://support.macincloud.com/support/solutions/articles/8000094204-how-to-manage-your-node-version-with-nvm-on-a-macincloud-managed-server)
-[Web Inspector with iOS Simulator](https://unrealnavigation.com/blog/web-inspector-with-ios-simulator)
+- [Access Your MacinCloud Managed Server Through a Web Browser](https://support.macincloud.com/support/solutions/articles/8000093372-access-your-macincloud-managed-server-through-a-web-browser)
+- [How To Open Firewall Ports In Windows 10](https://www.tomshardware.com/news/how-to-open-firewall-ports-in-windows-10,36451.html)
+- [rdesktop](https://github.com/rdesktop/rdesktop)
+- [Installing software on the Managed & Pay-As-You-Go server plan](https://support.macincloud.com/support/solutions/articles/8000054252-installing-software-on-the-managed-pay-as-you-go-server-plan)
+- [How to Manage your Node Version with NVM on a MacinCloud Managed Server](https://support.macincloud.com/support/solutions/articles/8000094204-how-to-manage-your-node-version-with-nvm-on-a-macincloud-managed-server)
+- [Web Inspector with iOS Simulator](https://unrealnavigation.com/blog/web-inspector-with-ios-simulator)
